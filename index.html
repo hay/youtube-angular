@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="ytplay">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        img {
+            float: left;
+            width: 200px;
+        }
+
+        li {
+            float: left;
+            clear: left;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div ng-view></div>
+
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-route.min.js"></script>
+    <script src="vendor/angular-resource.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/services.js"></script>
+    <script src="app/controllers/searchCtrl.js"></script>
+    <script src="app/controllers/notFoundCtrl.js"></script>
+    <script src="app/controllers/playCtrl.js"></script>
+</body>
+</html>

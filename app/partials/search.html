@@ -1,0 +1,15 @@
+<h1>Search with {{title}}</h1>
+
+<form ng-submit="search()">
+    <input type="search" ng-model="query" />
+    <button ng-click="search()">Zoek</button>
+</form>
+
+<ul ng-repeat="item in items">
+    <li ng-click="play(item.id)">
+        <img src="{{item.thumb}}" />
+
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+    </li>
+</ul>
