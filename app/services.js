@@ -2,7 +2,7 @@ angular.module('ytplay').factory('YoutubeApi', function($http, $sce) {
     var API_ENDPOINT = "http://gdata.youtube.com/feeds/api/videos";
 
     function transformItem(entry) {
-        var id = entry.id.$t.replace(API_ENDPOINT, "");
+        var id = entry.id.$t.replace(API_ENDPOINT + '/', "");
 
         return {
             "title" : entry.title.$t,
@@ -23,7 +23,8 @@ angular.module('ytplay').factory('YoutubeApi', function($http, $sce) {
         });
 
         req.success(function(data) {
-            cb(transformItem(data.entry));
+            var item = transformItem(data.entry);
+            cb(item);
         });
     }
 
@@ -38,7 +39,8 @@ angular.module('ytplay').factory('YoutubeApi', function($http, $sce) {
         });
 
         req.success(function(data) {
-            cb(data.feed.entry.map(transformItem));
+            var items = data.feed.entry.map(transformItem);
+            cb(items);
         });
     }
 

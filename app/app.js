@@ -3,6 +3,9 @@ angular.module('ytplay', ['ngRoute']).config(
         $routeProvider.when('/', {
             controller : 'searchCtrl',
             templateUrl : 'app/partials/search.html'
+        }).when('/q=:q', {
+            controller : 'searchCtrl',
+            templateUrl : 'app/partials/search.html'
         }).when('/404', {
             controller : 'notFoundCtrl',
             templateUrl : 'app/partials/404.html'

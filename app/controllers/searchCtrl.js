@@ -2,10 +2,19 @@ angular.module('ytplay').controller('searchCtrl', function searchCtrl($scope, $r
     $scope.title = "Search";
     $scope.items = [];
 
-    $scope.search = function() {
-        YoutubeApi.search($scope.query, function(result) {
+    if ($routeParams.q) {
+        search($routeParams.q);
+    }
+
+    function search(q) {
+        YoutubeApi.search(q, function(result) {
             $scope.items = result;
+            $location.path('/q=' + q);
         });
+    }
+
+    $scope.search = function() {
+        search( $scope.query );
     }
 
     $scope.play = function(id) {
