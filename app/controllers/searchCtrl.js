@@ -14,7 +14,7 @@ angular.module('ytplay').controller('searchCtrl', function searchCtrl($scope, $s
     }
 
     $scope.search = function() {
-        search( $scope.query );
+        $state.go('search', { q : $scope.query });
     }
 
     $scope.play = function(id) {
