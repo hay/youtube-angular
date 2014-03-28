@@ -1,15 +1,15 @@
-angular.module('ytplay').controller('searchCtrl', function searchCtrl($scope, $routeParams, $http, YoutubeApi, $location) {
+angular.module('ytplay').controller('searchCtrl', function searchCtrl($scope, $state, $stateParams, $http, YoutubeApi) {
     $scope.title = "Search";
     $scope.items = [];
 
-    if ($routeParams.q) {
-        search($routeParams.q);
+    if ($stateParams.q) {
+        search($stateParams.q);
     }
 
     function search(q) {
+        console.log('Search', q);
         YoutubeApi.search(q, function(result) {
             $scope.items = result;
-            $location.path('/q=' + q);
         });
     }
 
@@ -18,6 +18,6 @@ angular.module('ytplay').controller('searchCtrl', function searchCtrl($scope, $r
     }
 
     $scope.play = function(id) {
-        $location.path('/play/' + id);
+        $state.go('play', { id : id });
     }
 });

@@ -1,19 +1,26 @@
-angular.module('ytplay', ['ngRoute']).config(
-    function($routeProvider) {
-        $routeProvider.when('/', {
-            controller : 'searchCtrl',
-            templateUrl : 'app/partials/search.html'
-        }).when('/q=:q', {
-            controller : 'searchCtrl',
-            templateUrl : 'app/partials/search.html'
-        }).when('/404', {
-            controller : 'notFoundCtrl',
-            templateUrl : 'app/partials/404.html'
-        }).when('/play/:id', {
-            controller : 'playCtrl',
-            templateUrl : 'app/partials/play.html'
-        }).otherwise({
-            redirectTo : '/404'
-        })
+angular.module('ytplay', ['ui.router']).config(
+    function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/404');
+
+        $stateProvider
+            .state('root', {
+                controller : 'searchCtrl',
+                url : '/',
+                templateUrl : 'app/partials/search.html'
+            })
+            .state('search', {
+                controller : 'searchCtrl',
+                url : '/search/:q',
+                templateUrl : 'app/partials/search.html'
+            })
+            .state('404', {
+                url : '/404',
+                templateUrl : 'app/partials/404.html'
+            })
+            .state('play', {
+                controller : 'playCtrl',
+                url : '/play/:id',
+                templateUrl : 'app/partials/play.html'
+            })
     }
 );

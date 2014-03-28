@@ -1,6 +1,6 @@
-angular.module('ytplay').controller('playCtrl', function playCtrl($scope, $routeParams, $window, YoutubeApi) {
+angular.module('ytplay').controller('playCtrl', function playCtrl($scope, $stateParams, $window, YoutubeApi) {
 
-    YoutubeApi.getVideo($routeParams.id, function(item) {
+    YoutubeApi.getVideo($stateParams.id, function(item) {
         $scope.item = item;
     });
 
